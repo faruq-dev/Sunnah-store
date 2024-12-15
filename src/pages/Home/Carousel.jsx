@@ -1,4 +1,6 @@
 import { Carousel, IconButton } from "@material-tailwind/react";
+import carImg from "./../../assets/carousel-Image/carouselImg1.jpg"
+import carImg_2 from "./../../assets/carousel-Image/Screenshot_6.png"
 const CarouselElement = () => {
   return (
     <Carousel
@@ -53,12 +55,12 @@ const CarouselElement = () => {
       )}
     >
       <img
-        src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+        src={carImg}
         alt="image 1"
         className="h-full w-full object-cover"
       />
       <img
-        src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+        src={carImg_2}
         alt="image 2"
         className="h-full w-full object-cover"
       />
