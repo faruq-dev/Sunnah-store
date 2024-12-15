@@ -7,6 +7,8 @@ import {
   Collapse,
 } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
+import { FiShoppingCart } from "react-icons/fi";
+import { GrFavorite } from "react-icons/gr";
 
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -63,11 +65,41 @@ const Header = () => {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        
         <a href="#" className="flex items-center">
-          Cart
+          <FiShoppingCart className="size-6" />
         </a>
       </Typography>
+
+      {/* Wishlist */}
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="flex items-center gap-x-2 p-1 font-medium"
+      >
+        <a href="#" className="flex items-center">
+          <GrFavorite className="size-[22px]" />
+        </a>
+      </Typography>
+
+      {/* Sign in */}
+      <div className="order-4 text-center">
+        <ul>
+          <Typography
+            as="li"
+            variant="small"
+            color="blue-gray"
+            className=" font-medium bg-[#43A147] text-white px-4 py-[10px] rounded-lg"
+          >
+            <a
+              href="#"
+              className="text-center uppercase text-[12px] font-semibold"
+            >
+              Login
+            </a>
+          </Typography>
+        </ul>
+      </div>
     </ul>
   );
 
@@ -83,7 +115,7 @@ const Header = () => {
         </Typography>
 
         {/* Menu items */}
-        <div className="hidden lg:block lg:order-3">{navList}</div>
+        <div className="hidden lg:block lg:order-3">{navList} </div>
 
         {/* Search box */}
         <div className="hidden items-center gap-x-2 lg:flex">
@@ -92,7 +124,7 @@ const Header = () => {
               type="search"
               placeholder="Search"
               containerProps={{
-                className: "min-w-[288px]",
+                className: "min-w-[288px] 2xl:min-w-[388px]",
               }}
               className=" !border-t-blue-gray-300 pl-9 placeholder:text-gray-600 focus:!border-blue-gray-300"
               labelProps={{
@@ -125,7 +157,7 @@ const Header = () => {
             Search
           </Button>
         </div>
-        
+
         <IconButton
           variant="text"
           className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -209,7 +241,6 @@ const Header = () => {
           </div>
         </div>
       </Collapse>
-
     </Navbar>
   );
 };
