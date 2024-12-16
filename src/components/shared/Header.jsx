@@ -9,6 +9,8 @@ import {
 import { useEffect, useState } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { GrFavorite } from "react-icons/gr";
+import { Link, NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -29,9 +31,9 @@ const Header = () => {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <a href="#" className="flex items-center">
+        <NavLink to={'products'}  className="flex items-center">
           Products
-        </a>
+        </NavLink>
       </Typography>
 
       {/* About */}
@@ -41,9 +43,9 @@ const Header = () => {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <a href="#" className="flex items-center">
+        <NavLink to={'about'} className="flex items-center">
           About
-        </a>
+        </NavLink>
       </Typography>
 
       {/* Contact */}
@@ -53,9 +55,9 @@ const Header = () => {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <a href="#" className="flex items-center">
+        <NavLink to={'contact'} className="flex items-center">
           Contact
-        </a>
+        </NavLink>
       </Typography>
 
       {/* Cart */}
@@ -65,9 +67,9 @@ const Header = () => {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <a href="#" className="flex items-center">
+        <NavLink to={'cart'} className="flex items-center">
           <FiShoppingCart className="size-6" />
-        </a>
+        </NavLink>
       </Typography>
 
       {/* Wishlist */}
@@ -77,9 +79,9 @@ const Header = () => {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <a href="#" className="flex items-center">
+        <NavLink to={'wishlist'} className="flex items-center">
           <GrFavorite className="size-[22px]" />
-        </a>
+        </NavLink>
       </Typography>
 
       {/* Sign in */}
@@ -106,13 +108,15 @@ const Header = () => {
   return (
     <Navbar className="max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4 fixed top-0 z-40">
       <div className="container mx-auto flex flex-wrap items-center justify-between text-blue-gray-900">
-        <Typography
-          as="a"
-          href="#"
-          className="mr-4 text-3xl text-[#45A449] cursor-pointer py-1.5 font-dmSans font-bold"
-        >
-          Sunnah Store
-        </Typography>
+        <Link to={'/'} >
+          <Typography
+            as="a"
+            href="#"
+            className="mr-4 text-3xl text-[#45A449] cursor-pointer py-1.5 font-dmSans font-bold"
+          >
+            Sunnah Store
+          </Typography>
+        </Link>
 
         {/* Menu items */}
         <div className="hidden lg:block lg:order-3">{navList} </div>
