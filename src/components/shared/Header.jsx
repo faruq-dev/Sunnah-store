@@ -84,7 +84,7 @@ const Header = () => {
         </NavLink>
       </Typography>
 
-      {/* Sign in */}
+      {/* Log in */}
       <div className="order-4 text-center">
         <ul>
           <Typography
@@ -93,12 +93,10 @@ const Header = () => {
             color="blue-gray"
             className=" font-medium bg-[#43A147] text-white px-4 py-[10px] rounded-lg"
           >
-            <a
-              href="#"
-              className="text-center uppercase text-[12px] font-semibold"
+            <Link to={"login"}  className="text-center uppercase text-[12px] font-semibold"
             >
               Login
-            </a>
+            </Link>
           </Typography>
         </ul>
       </div>
