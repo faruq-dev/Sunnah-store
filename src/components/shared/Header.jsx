@@ -87,7 +87,7 @@ const Header = () => {
       {/* Log in */}
       <div className="order-4 text-center">
         <ul>
-          <Typography
+          <Link to={'login'}
             as="li"
             variant="small"
             color="blue-gray"
@@ -97,7 +97,7 @@ const Header = () => {
             >
               Login
             </Link>
-          </Typography>
+          </Link>
         </ul>
       </div>
     </ul>

@@ -8,6 +8,8 @@ import Wishlist from "../pages/Wishlist/Wishlist";
 import Contact from "../pages/Contact/Contact";
 import AuthLayout from "../Layout/AuthLayout";
 import Login from "../pages/Auth/Login/Login";
+import NotFound from "../pages/Not Found/NotFound";
+import Signup from "../pages/Auth/Sign up/Signup";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -48,8 +50,17 @@ const router = createBrowserRouter([{
             path: "login",
             element: <Login/>
         },
+        {
+            path: "signup",
+            element: <Signup/>
+        }
         
     ]
+},
+
+{
+    path: "*",
+    element: <NotFound/>
 }
 
 
