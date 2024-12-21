@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
-  LoadCanvasTemplateNoReload,
-  validateCaptcha,
 } from "react-simple-captcha";
 
 const Login = () => {
@@ -118,12 +116,12 @@ const Login = () => {
             Continue with Google
           </button>
 
-          <h3 className="text-center pt-2">
+          <div className="text-center pt-2">
             <span className="text-gray-800">Don&apos;t have an account? </span>
             <Link to={"/signup"} className="text-[#4CAF50] font-bold">
               Sign up
-            </Link>{" "}
-          </h3>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

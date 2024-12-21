@@ -20,6 +20,9 @@ const Header = () => {
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
+    return () => {
+      window.removeEventListener("resize", () => {}); // Clean up event listener
+    };
   }, []);
 
   const navList = (
@@ -31,7 +34,7 @@ const Header = () => {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <NavLink to={'products'}  className="flex items-center">
+        <NavLink to={"products"} className="flex items-center">
           Products
         </NavLink>
       </Typography>
@@ -43,7 +46,7 @@ const Header = () => {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <NavLink to={'about'} className="flex items-center">
+        <NavLink to={"about"} className="flex items-center">
           About
         </NavLink>
       </Typography>
@@ -55,7 +58,7 @@ const Header = () => {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <NavLink to={'contact'} className="flex items-center">
+        <NavLink to={"contact"} className="flex items-center">
           Contact
         </NavLink>
       </Typography>
@@ -67,7 +70,7 @@ const Header = () => {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <NavLink to={'cart'} className="flex items-center">
+        <NavLink to={"cart"} className="flex items-center">
           <FiShoppingCart className="size-6" />
         </NavLink>
       </Typography>
@@ -79,7 +82,7 @@ const Header = () => {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <NavLink to={'wishlist'} className="flex items-center">
+        <NavLink to={"wishlist"} className="flex items-center">
           <GrFavorite className="size-[22px]" />
         </NavLink>
       </Typography>
@@ -87,17 +90,15 @@ const Header = () => {
       {/* Log in */}
       <div className="order-4 text-center">
         <ul>
-          <Link to={'login'}
+          <NavLink
+            to={"login"}
             as="li"
             variant="small"
             color="blue-gray"
-            className=" font-medium bg-[#43A147] text-white px-4 py-[10px] rounded-lg"
+            className="bg-[#43A147] text-white px-4 py-[10px] rounded-lg text-center uppercase text-[12px] font-semibold"
           >
-            <Link to={"login"}  className="text-center uppercase text-[12px] font-semibold"
-            >
-              Login
-            </Link>
-          </Link>
+            Login
+          </NavLink>
         </ul>
       </div>
     </ul>
@@ -106,7 +107,7 @@ const Header = () => {
   return (
     <Navbar className="max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4 fixed top-0 z-40">
       <div className="container mx-auto flex flex-wrap items-center justify-between text-blue-gray-900">
-        <Link to={'/'} >
+        <Link to={"/"}>
           <Typography
             as="a"
             href="#"
@@ -117,7 +118,7 @@ const Header = () => {
         </Link>
 
         {/* Menu items */}
-        <div className="hidden lg:block lg:order-3">{navList} </div>
+        <div className="hidden lg:block lg:order-3">{navList}</div>
 
         {/* Search box */}
         <div className="hidden items-center gap-x-2 lg:flex">
