@@ -10,6 +10,7 @@ import AuthLayout from "../Layout/AuthLayout";
 import Login from "../pages/Auth/Login/Login";
 import NotFound from "../pages/Not Found/NotFound";
 import Signup from "../pages/Auth/Sign up/Signup";
+import ResetPassword from "../pages/Auth/Reset Pass/ResetPassword";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -53,6 +54,10 @@ const router = createBrowserRouter([{
         {
             path: "signup",
             element: <Signup/>
+        },
+        {
+            path: "reset",
+            element: <ResetPassword/>
         }
         
     ]
