@@ -109,8 +109,6 @@ const Header = () => {
       <div className="container mx-auto flex flex-wrap items-center justify-between text-blue-gray-900">
         <Link to={"/"}>
           <Typography
-            as="a"
-            href="#"
             className="mr-4 text-3xl text-[#45A449] cursor-pointer py-1.5 font-dmSans font-bold"
           >
             Sunnah Store
