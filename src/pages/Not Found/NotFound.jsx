@@ -1,8 +1,15 @@
+import { Helmet } from "react-helmet-async";
+
 const NotFound = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-50">
+      <Helmet>
+        <title>Sunnah Store | Not Found</title>
+      </Helmet>
       <div className="text-center px-6">
-        <h1 className="text-9xl font-extrabold text-[#43A047] animate-bounce">404</h1>
+        <h1 className="text-9xl font-extrabold text-[#43A047] animate-bounce">
+          404
+        </h1>
         <h2 className="text-3xl font-semibold mt-4 text-gray-800">
           Oops! Page Not Found
         </h2>

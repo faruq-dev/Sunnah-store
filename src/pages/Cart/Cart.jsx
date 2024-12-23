@@ -1,7 +1,13 @@
+import { Helmet } from "react-helmet-async";
+
 const Cart = () => {
   return (
-    <div>Cart</div>
-  )
-}
+    <div>
+      <Helmet>
+        <title>Sunnah Store | Cart</title>
+      </Helmet>
+    </div>
+  );
+};
 
-export default Cart
+export default Cart;

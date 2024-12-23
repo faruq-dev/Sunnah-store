@@ -1,14 +1,20 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
     <div className="bg-gray-50 text-gray-800 min-h-screen mt-20">
+      <Helmet>
+        <title>Sunnah Store | About</title>
+      </Helmet>
       {/* Hero Section */}
       <section className="bg-[#45A449] text-white py-20 px-5 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-4">About Us</h1>
           <p className="text-lg leading-relaxed">
-            Welcome to Sunnah Store, where quality meets convenience. We`&apos;`re committed to bringing you the best products with a seamless shopping experience.
+            Welcome to Sunnah Store, where quality meets convenience.
+            We`&apos;`re committed to bringing you the best products with a
+            seamless shopping experience.
           </p>
         </div>
       </section>
@@ -18,7 +24,9 @@ const AboutUs = () => {
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl font-semibold mb-6">Our Mission</h2>
           <p className="text-lg leading-relaxed text-gray-600">
-            At Sunnah Store, our mission is to simplify your life with thoughtfully curated products that blend style, functionality, and affordability. We strive to exceed expectations with every order.
+            At Sunnah Store, our mission is to simplify your life with
+            thoughtfully curated products that blend style, functionality, and
+            affordability. We strive to exceed expectations with every order.
           </p>
         </div>
       </section>
@@ -26,24 +34,29 @@ const AboutUs = () => {
       {/* Values Section */}
       <section className="bg-gray-100 py-16 px-5">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-semibold text-center mb-6">Our Values</h2>
+          <h2 className="text-3xl font-semibold text-center mb-6">
+            Our Values
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-6 shadow-lg rounded-lg">
               <h3 className="text-xl font-semibold mb-4">Customer First</h3>
               <p className="text-gray-600">
-                We prioritize our customers`&apos;` needs and work tirelessly to provide a delightful shopping experience.
+                We prioritize our customers`&apos;` needs and work tirelessly to
+                provide a delightful shopping experience.
               </p>
             </div>
             <div className="bg-white p-6 shadow-lg rounded-lg">
               <h3 className="text-xl font-semibold mb-4">Sustainability</h3>
               <p className="text-gray-600">
-                We are committed to sustainable practices, sourcing eco-friendly products, and reducing waste.
+                We are committed to sustainable practices, sourcing eco-friendly
+                products, and reducing waste.
               </p>
             </div>
             <div className="bg-white p-6 shadow-lg rounded-lg">
               <h3 className="text-xl font-semibold mb-4">Innovation</h3>
               <p className="text-gray-600">
-                We embrace creativity and continuously innovate to stay ahead in the e-commerce industry.
+                We embrace creativity and continuously innovate to stay ahead in
+                the e-commerce industry.
               </p>
             </div>
           </div>
@@ -91,9 +104,13 @@ const AboutUs = () => {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-semibold mb-4">Join Our Journey</h2>
           <p className="text-lg leading-relaxed mb-6">
-            Be part of a community that values quality, innovation, and customer satisfaction. Shop with us today and experience the difference.
+            Be part of a community that values quality, innovation, and customer
+            satisfaction. Shop with us today and experience the difference.
           </p>
-          <Link to={'/products'} className="bg-white text-[#45A449] font-semibold py-2 px-6 rounded-lg hover:bg-gray-200 transition duration-300">
+          <Link
+            to={"/products"}
+            className="bg-white text-[#45A449] font-semibold py-2 px-6 rounded-lg hover:bg-gray-200 transition duration-300"
+          >
             Shop Now
           </Link>
         </div>

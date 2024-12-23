@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { FaGoogle } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import {
@@ -27,6 +28,9 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <Helmet>
+        <title>Login | Sunnah Store</title>
+      </Helmet>
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold text-center mb-2 text-gray-800">
           Login
