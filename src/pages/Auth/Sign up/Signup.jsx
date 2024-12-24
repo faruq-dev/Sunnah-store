@@ -27,6 +27,7 @@ const Signup = () => {
               Full Name
             </label>
             <input
+              name="name"
               type="text"
               id="name"
               placeholder="John Doe"
@@ -42,6 +43,7 @@ const Signup = () => {
               Email Address
             </label>
             <input
+              name="email"
               type="email"
               id="email"
               placeholder="example@domain.com"
@@ -57,6 +59,7 @@ const Signup = () => {
               Password
             </label>
             <input
+              name="password"
               type="password"
               id="password"
               placeholder="********"
@@ -72,6 +75,7 @@ const Signup = () => {
               Confirm Password
             </label>
             <input
+              name="confirmPassword"
               type="password"
               id="confirm-password"
               placeholder="********"
