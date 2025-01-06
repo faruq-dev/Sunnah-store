@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet-async";
 import { FaGoogle } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 mt-20 md:mt-0">
+      <Helmet>
+        <title>Sunnah Store | Signup</title>
+      </Helmet>
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
         {/* Title Part */}
         <h2 className="text-3xl font-bold text-center text-[#4CAF50]">
@@ -23,6 +27,7 @@ const Signup = () => {
               Full Name
             </label>
             <input
+              name="name"
               type="text"
               id="name"
               placeholder="John Doe"
@@ -38,6 +43,7 @@ const Signup = () => {
               Email Address
             </label>
             <input
+              name="email"
               type="email"
               id="email"
               placeholder="example@domain.com"
@@ -53,6 +59,7 @@ const Signup = () => {
               Password
             </label>
             <input
+              name="password"
               type="password"
               id="password"
               placeholder="********"
@@ -68,6 +75,7 @@ const Signup = () => {
               Confirm Password
             </label>
             <input
+              name="confirmPassword"
               type="password"
               id="confirm-password"
               placeholder="********"
@@ -98,7 +106,7 @@ const Signup = () => {
 
         <p className="mt-4 text-md text-center text-gray-600">
           Already have an account?{" "}
-          <Link to={'/login'} className="text-[#4CAF50] hover:underline">
+          <Link to={"/login"} className="text-[#4CAF50] hover:underline">
             Log In
           </Link>
         </p>

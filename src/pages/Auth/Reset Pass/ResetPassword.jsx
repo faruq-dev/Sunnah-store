@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const ResetPassword = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
+      <Helmet>
+        <title>Sunnah Store | Reset Password</title>
+      </Helmet>
       <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
         <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
           Reset Your Password
@@ -27,12 +31,12 @@ const ResetPassword = () => {
         <div className="text-center mt-6 text-gray-600">
           <p>
             Didn&apos;t sign in yet?{" "}
-            <Link to={'/login'} className="text-green-600 hover:underline">
+            <Link to={"/login"} className="text-green-600 hover:underline">
               Log in
             </Link>
           </p>
           <p className="mt-2">
-            <Link to={'/'} className="text-green-600 hover:underline">
+            <Link to={"/"} className="text-green-600 hover:underline">
               Back to Home
             </Link>
           </p>
