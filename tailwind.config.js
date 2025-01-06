@@ -1,6 +1,6 @@
-const withMT = require("@material-tailwind/react/utils/withMT");
- 
-module.exports = withMT({
+import withMT from "@material-tailwind/react/utils/withMT";
+
+export default withMT({
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,10 +8,9 @@ module.exports = withMT({
   theme: {
     extend: {
       fontFamily: {
-        dmSans: ['DM Sans' , 'sans-serif'],
-      }
+        dmSans: ['DM Sans', 'sans-serif'],
+      },
     },
   },
   plugins: [],
 });
-
