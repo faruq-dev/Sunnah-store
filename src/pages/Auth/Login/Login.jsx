@@ -16,14 +16,72 @@ const Login = () => {
 
   const [disabled, setDisabled] = useState(true);
 
+  // State for validation errors
+  const [errors, setErrors] = useState({});
+
+  // State for form data
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+    captcha: "",
+  })
+
   const handleValidateCaptcha = (e) => {
     const captchaValue = e.target.value;
-    if (validateCaptcha(captchaValue) == true) {
+    if (validateCaptcha(captchaValue) === true) {
       setDisabled(false);
     } else {
       setDisabled(true);
       alert("captcha validation failed");
     }
+  };
+
+  const changeHandler = (e) =>{
+    const {name, value} = e.target;
+    setLoginData({...loginData, [name]: value});
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const newErrors = {};
+
+    // Email validation
+    if (!loginData.email) {
+      newErrors.email = "Email is required!";
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(loginData.email)) {
+        newErrors.email = "Email is invalid!";
+      }
+    };
+
+    // Password validation
+    if (!loginData.password) {
+      newErrors.password = "Password is required!";
+    } else {
+      if (loginData.password.length < 6) {
+        newErrors.password = "Password must be at least 6 characters!";
+      }
+    }
+
+    // Captcha validation
+    if (!loginData.captcha){
+      newErrors.captcha = "Captcha is required!";
+    } else {
+      if (validateCaptcha(loginData.captcha) === false) {
+        newErrors.captcha = "Captcha is invalid!";
+      }
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    };
+
+    // If no errors, clear the form
+    setErrors({});
+    
   };
 
   return (
@@ -39,7 +97,7 @@ const Login = () => {
           Enter your details to sign in.
         </h3>
 
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={submitHandler}>
           {/* Email Input */}
           <div>
             <label
@@ -52,10 +110,14 @@ const Login = () => {
               name="email"
               type="email"
               id="email"
+              onChange={changeHandler}
               className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500"
               placeholder="example@domain.com"
               required
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1 z-10">{errors.email}</p>
+            )}
           </div>
 
           {/* Password Input */}
@@ -70,10 +132,14 @@ const Login = () => {
               name="password"
               type="password"
               id="password"
+              onChange={changeHandler}
               className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500"
               placeholder="Enter your password"
               required
             />
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1 z-10">{errors.password}</p>
+            )}
           </div>
 
           {/* Remember Me & Forgot Password */}
@@ -108,8 +174,12 @@ const Login = () => {
               name="captcha"
               placeholder="Type the captcha displayed above"
               onBlur={(e) => handleValidateCaptcha(e)}
+              onChange={changeHandler}
               className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500"
             />
+            {errors.captcha && (
+              <p className="text-red-500 text-sm mt-1 z-10">{errors.captcha}</p>
+            )}
           </div>
 
           {/* Submit Button */}
