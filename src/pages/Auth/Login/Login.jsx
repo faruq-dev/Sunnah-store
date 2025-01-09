@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaGoogle } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { LuEye } from "react-icons/lu";
+import { LuEyeClosed } from "react-icons/lu";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -14,6 +16,10 @@ const Login = () => {
     loadCaptchaEnginge(4, "#CFD8DC");
   }, []);
 
+  // State for showing/hiding password field
+  const [showPass, setShowPass] = useState(false);
+
+  // State for disabling the Login button based on captcha matching
   const [disabled, setDisabled] = useState(true);
 
   // State for validation errors
@@ -24,7 +30,7 @@ const Login = () => {
     email: "",
     password: "",
     captcha: "",
-  })
+  });
 
   const handleValidateCaptcha = (e) => {
     const captchaValue = e.target.value;
@@ -36,9 +42,9 @@ const Login = () => {
     }
   };
 
-  const changeHandler = (e) =>{
-    const {name, value} = e.target;
-    setLoginData({...loginData, [name]: value});
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    setLoginData({ ...loginData, [name]: value });
   };
 
   const submitHandler = (e) => {
@@ -54,7 +60,7 @@ const Login = () => {
       if (!emailRegex.test(loginData.email)) {
         newErrors.email = "Email is invalid!";
       }
-    };
+    }
 
     // Password validation
     if (!loginData.password) {
@@ -66,7 +72,7 @@ const Login = () => {
     }
 
     // Captcha validation
-    if (!loginData.captcha){
+    if (!loginData.captcha) {
       newErrors.captcha = "Captcha is required!";
     } else {
       if (validateCaptcha(loginData.captcha) === false) {
@@ -77,11 +83,10 @@ const Login = () => {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
-    };
+    }
 
     // If no errors, clear the form
     setErrors({});
-    
   };
 
   return (
@@ -113,7 +118,6 @@ const Login = () => {
               onChange={changeHandler}
               className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500"
               placeholder="example@domain.com"
-              required
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-1 z-10">{errors.email}</p>
@@ -128,17 +132,25 @@ const Login = () => {
             >
               Password
             </label>
-            <input
-              name="password"
-              type="password"
-              id="password"
-              onChange={changeHandler}
-              className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500"
-              placeholder="Enter your password"
-              required
-            />
+            <div className="relative">
+              <input
+                name="password"
+                type={showPass ? "text" : "password"}
+                id="password"
+                onChange={changeHandler}
+                className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                placeholder="Enter your password"
+              />
+              <div 
+              onClick={() => setShowPass(!showPass)}
+              className="absolute inset-y-0 right-3 flex items-center cursor-pointer">
+                {showPass ? (<LuEye size={20} color="gray" />) : (<LuEyeClosed size={20} color="gray" />)}
+              </div>
+            </div>
             {errors.password && (
-              <p className="text-red-500 text-sm mt-1 z-10">{errors.password}</p>
+              <p className="text-red-500 text-sm mt-1 z-10">
+                {errors.password}
+              </p>
             )}
           </div>
 
@@ -159,7 +171,7 @@ const Login = () => {
             </Link>
           </div>
 
-          {/* Captcha */}
+          {/* Captcha  Field*/}
           <div className="my-4">
             <label className="block text-sm font-medium text-gray-600 mb-2">
               Please solve the CAPTCHA:

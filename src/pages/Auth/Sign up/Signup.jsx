@@ -1,8 +1,71 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaGoogle } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
+  const [errors, setErrors] = useState({});
+  const [signupData, setSignupData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const changeHandler = (e) => {
+    const {name, value} = e.target;
+    setSignupData({
+      ...signupData,
+      [name]: value
+    })
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    let newErrors = {};
+
+    // Name validation
+    if (!signupData.name) {
+      newErrors.name = "Name is required!";
+    } else {
+      const nameRegex = /^[a-zA-Z\s]+$/;
+      if (!nameRegex.test(signupData.name)) {
+        newErrors.name = "Name must contain only alphabets!";
+      }
+    };
+
+    // Email validation
+    if (!signupData.email) {
+      newErrors.email = "Email is required!";
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(signupData.email)) {
+        newErrors.email = "Email is invalid!";
+      }
+    };
+
+    // Password validation
+    if (!signupData.password) {
+      newErrors.password = "Password is required!";
+    } else {
+      if (signupData.password.length < 6) {
+        newErrors.password = "Password must be at least 6 characters!";
+      }
+    };
+
+    // Confirm Password validation
+    if (!signupData.confirmPassword) {
+      newErrors.confirmPassword = "Rewrite the password"
+    } else if (signupData.confirmPassword !== signupData.password) {
+        newErrors.confirmPassword = "Passwords do not match"
+    };
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+  }
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 mt-20 md:mt-0">
       <Helmet>
@@ -18,7 +81,7 @@ const Signup = () => {
         </p>
 
         {/* Input Fields */}
-        <form className="mt-6 space-y-4">
+        <form className="mt-6 space-y-4" onSubmit={submitHandler}>
           <div>
             <label
               htmlFor="name"
@@ -31,8 +94,12 @@ const Signup = () => {
               type="text"
               id="name"
               placeholder="John Doe"
+              onChange={changeHandler}
               className="w-full mt-1 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-[#4CAF50] focus:border-[#4CAF50]"
             />
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+            )}
           </div>
 
           <div>
@@ -47,8 +114,12 @@ const Signup = () => {
               type="email"
               id="email"
               placeholder="example@domain.com"
+              onChange={changeHandler}
               className="w-full mt-1 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-[#4CAF50] focus:border-[#4CAF50]"
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
           </div>
 
           <div>
@@ -63,8 +134,12 @@ const Signup = () => {
               type="password"
               id="password"
               placeholder="********"
+              onChange={changeHandler}
               className="w-full mt-1 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-[#4CAF50] focus:border-[#4CAF50]"
             />
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+            )}
           </div>
 
           <div>
@@ -79,8 +154,12 @@ const Signup = () => {
               type="password"
               id="confirm-password"
               placeholder="********"
+              onChange={changeHandler}
               className="w-full mt-1 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-[#4CAF50] focus:border-[#4CAF50]"
             />
+            {errors.confirmPassword && (
+              <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>
+            )}
           </div>
 
           <button
